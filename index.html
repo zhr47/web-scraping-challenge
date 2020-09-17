@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Mission to Mars - Zaheer</title>
+    
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+      integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z"
+      crossorigin="anonymous"
+    />
+    <!-- Background -->
+    <style>
+      body {
+        background-color: black;
+      }
+    </style>
+  </head>
+
+  <!-- Create Container -->
+  <body>
+    <div class="container">
+        <!-- Add Jumbotron w/ Image URL -->
+        <div class="jumbotron text-center" style="background-image: url(https://pmdvod.nationalgeographic.com/NG_Video/863/99/lgpost_1527179958264.jpg); background-size: 100%; height: 350px;">
+          <h1 class="display-4" style="color: white">Mission to Mars</h1>
+          <!-- Add Button with link to mars_app -->
+          <a class="btn btn-lg text-black" style="background-color:clear; color: black" href="/scrape" role="button">Scrape New Mars Data</a>
+      </div>
+
+      <!-- Add Recent News -->
+      <div class="row">
+        <div class="col-md-12">
+          <div class="media">
+            <div class="media-body">
+              <h2 style="color: white"><b>Most Recent Mars News</b></h2>
+              <h4 class="media-heading" style="color: white"><b>{{mars.news_title}}</b></h4>
+              <h5 style="color: white"><p>{{mars.news_paragraph}}</p></h5>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Add Featured Image -->
+      <div class="row">
+        <div class="col-md-6">
+          <h2 style="color: white"><b>Featured Mars Image</b></h2>
+            <img src="{{mars.featured_image_url}}" style="width: 75%; height: 75%;" class="img-responsive">
+        </div>
+        
+          <!-- Add Mars HTML Facts Table - Safe used to show table data -->
+          <div class="row">
+            <div class="col-md-6" style="color: white"></div>
+            <h3 style="color: white"><b></b>Mars Facts</b></h3>
+              <p style=>{{mars.mars_facts | safe}}</p> 
+            
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="row" style="margin-top: 80px;">
+        <div class="page-header col-md-12">
+          <h2 class="text-center" style="color: white"><b>Mars Hemispheres</b></h2>
+        </div>
+        {% for hemisphere in mars.hemisphere_image_urls %}
+          <div class="col-md-6">
+            <div class="card"; style="background-color:black"; width: 35rem;">
+              <img class="card-img-top" src="{{hemisphere.img_url}}" style="width: 45%; height: 45%;" class="img-responsive">
+              <div class="card-body">
+                <div class="card-text"; style="color: white">
+                  <h3><b>{{hemisphere.title}}</b></h3>
+                </div>
+              
+              </div>
+            </div>
+          </div>
+          {% endfor %}
+      </div>
+    </div>
+
+
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+
+  </body>
+
+    
+  </html>
